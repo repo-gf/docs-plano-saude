@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Documentos para Plano de Saúde</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <div>
+          <p class="eyebrow">Cotação de plano de saúde</p>
+          <h1>Documentos necessários</h1>
+        </div>
+        <p class="header-note">Gere uma lista pronta para copiar e colar no WhatsApp.</p>
+      </header>
+
+      <section class="workspace" aria-label="Gerador de documentos">
+        <form class="panel controls" id="documentos-form">
+          <fieldset>
+            <legend>Dados do titular</legend>
+
+            <label for="categoria">Categoria</label>
+            <select id="categoria" name="categoria">
+              <option value="PF">PF</option>
+              <option value="CNPJ">CNPJ</option>
+              <option value="ADESAO">ADESÃO</option>
+            </select>
+
+            <div class="field hidden" id="modalidade-field">
+              <label for="modalidade">Modalidade</label>
+              <select id="modalidade" name="modalidade"></select>
+            </div>
+
+            <label class="check-row">
+              <input type="checkbox" id="titular-nascido-2010">
+              <span>Nasceu em 2010 ou depois?</span>
+            </label>
+
+            <label class="check-row">
+              <input type="checkbox" id="titular-carencia">
+              <span>Fará compra de carência?</span>
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Adicionar dependente</legend>
+
+            <label for="dependente-tipo">Tipo de dependente</label>
+            <select id="dependente-tipo">
+              <option value="">Selecione</option>
+            </select>
+
+            <label class="check-row">
+              <input type="checkbox" id="dependente-nascido-2010">
+              <span>Nasceu em 2010 ou depois?</span>
+            </label>
+
+            <label class="check-row">
+              <input type="checkbox" id="dependente-carencia">
+              <span>Fará compra de carência?</span>
+            </label>
+
+            <button class="button secondary" type="button" id="adicionar-dependente">
+              Adicionar dependente
+            </button>
+          </fieldset>
+
+          <section class="included" aria-label="Inclusos nessa cotação">
+            <div class="section-title-row">
+              <h2>Inclusos nessa cotação</h2>
+            </div>
+            <div class="included-list" id="lista-inclusos"></div>
+          </section>
+
+          <div class="actions">
+            <button class="button primary" type="submit">Gerar lista</button>
+            <button class="button ghost" type="button" id="limpar-tudo">Limpar tudo</button>
+          </div>
+        </form>
+
+        <section class="panel output-panel" aria-label="Resultado">
+          <div class="section-title-row">
+            <div>
+              <p class="eyebrow">Resultado</p>
+              <h2>Texto para WhatsApp</h2>
+            </div>
+            <button class="button secondary compact" type="button" id="copiar-lista" disabled>
+              Copiar
+            </button>
+          </div>
+
+          <textarea
+            id="resultado"
+            rows="22"
+            readonly
+            placeholder="A lista de documentos vai aparecer aqui."
+          ></textarea>
+          <p class="status" id="status" role="status" aria-live="polite"></p>
+        </section>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
